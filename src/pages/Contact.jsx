@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000"; // replace with your JSON server port
+const BASE_URL = "https://restaurant-server-1-zihz.onrender.com"; // replace with your JSON server port
 
 function Contact() {
   const [formData, setFormData] = useState({

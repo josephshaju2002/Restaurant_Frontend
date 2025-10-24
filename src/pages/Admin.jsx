@@ -15,7 +15,7 @@ import { FaEnvelope, FaUtensils } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://restaurant-server-1-zihz.onrender.com";
 
 function Admin() {
   const [view, setView] = useState("home"); // home | messages | dishes

@@ -71,16 +71,59 @@ function CartPage() {
         <Typography variant="h6" sx={{ textAlign: "center" }}>Your cart is empty!</Typography>
       ) : (
         cartItems.map((item) => (
-          <Box key={item.id} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 2, p: 2, border: "1px solid #ccc", borderRadius: "10px" }}>
-            <Typography variant="h6">{item.name}</Typography>
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <Button variant="outlined" onClick={() => handleDecrease(item.id)}>-</Button>
-              <TextField size="small" value={item.quantity} inputProps={{ readOnly: true, style: { width: "40px", textAlign: "center" } }} />
-              <Button variant="outlined" onClick={() => handleIncrease(item.id)}>+</Button>
-              <Typography sx={{ width: "80px", textAlign: "right" }}>₹{(item.price * item.quantity).toFixed(2)}</Typography>
-              <IconButton color="error" onClick={() => handleRemove(item.id)}><DeleteIcon /></IconButton>
-            </Box>
-          </Box>
+          <Box
+  key={item.id}
+  sx={{
+    display: "flex",
+    flexDirection: { xs: "column", sm: "row" }, // 🔹 column on mobile, row on larger
+    alignItems: { xs: "flex-start", sm: "center" },
+    justifyContent: "space-between",
+    gap: 2,
+    mb: 2,
+    p: 2,
+    border: "1px solid #ccc",
+    borderRadius: "10px",
+  }}
+>
+  {/* Item Name */}
+  <Typography variant="h6" sx={{ mb: { xs: 1, sm: 0 } }}>
+    {item.name}
+  </Typography>
+
+  {/* Quantity Controls */}
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      flexWrap: "wrap", // 🔹 allows wrapping if needed
+      gap: 1,
+      justifyContent: { xs: "flex-start", sm: "flex-end" },
+      width: { xs: "100%", sm: "auto" }, // 🔹 full width on small screens
+    }}
+  >
+    <Button variant="outlined" onClick={() => handleDecrease(item.id)}>
+      -
+    </Button>
+    <TextField
+      size="small"
+      value={item.quantity}
+      inputProps={{
+        readOnly: true,
+        style: { width: "40px", textAlign: "center" },
+      }}
+    />
+    <Button variant="outlined" onClick={() => handleIncrease(item.id)}>
+      +
+    </Button>
+    <Typography sx={{ width: "80px", textAlign: "right" }}>
+      ₹{(item.price * item.quantity).toFixed(2)}
+    </Typography>
+    <IconButton color="error" onClick={() => handleRemove(item.id)}>
+      <DeleteIcon />
+    </IconButton>
+  </Box>
+</Box>
+
         ))
       )}
 

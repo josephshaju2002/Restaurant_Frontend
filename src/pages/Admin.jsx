@@ -14,6 +14,8 @@ import {
 import { FaEnvelope, FaUtensils } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Grid } from "@mui/material";
+
 
 const BASE_URL = "https://restaurant-server-1-zihz.onrender.com";
 
@@ -157,42 +159,65 @@ function Admin() {
 
       {/* Home Page */}
       {view === "home" && (
-        <Box className="container mt-5">
-          <div className="row mt-5">
-            <div className="col-1"></div>
-            <div className="col-4 mt-5">
-              <div className="shadow rounded p-5 text-center">
-                <FaEnvelope className="fs-1 mb-2 text-primary" />
-                <h2>MESSAGES</h2>
-                <p>View All The Messages From The Users.</p>
-                <Button
-                  variant="contained"
-                  sx={{ mt: 2, backgroundColor: "#bc5f18ff" }}
-                  onClick={() => setView("messages")}
-                >
-                  Go to Messages
-                </Button>
-              </div>
-            </div>
-            <div className="col-2"></div>
-            <div className="col-4 mt-5">
-              <div className="shadow rounded p-5 text-center">
-                <FaUtensils className="fs-1 mb-2 text-success" />
-                <h2>Manage Dishes</h2>
-                <p>Manage All The Dishes.</p>
-                <Button
-                  variant="contained"
-                  sx={{ mt: 2, backgroundColor: "#bc5f18ff" }}
-                  onClick={() => setView("dishes")}
-                >
-                  Go to Dishes
-                </Button>
-              </div>
-            </div>
-            <div className="col-1"></div>
-          </div>
+  <Box sx={{ mt: 5, px: 2 }}>
+    <Grid
+      container
+      spacing={4}
+      justifyContent="center"
+      alignItems="center"
+      sx={{ mt: 5 }}
+    >
+      {/* Messages Card */}
+      <Grid item xs={12} sm={6} md={4}>
+        <Box className="shadow rounded p-5 text-center">
+          <FaEnvelope className="fs-1 mb-2 text-primary" />
+          <Typography variant="h5" fontWeight="bold" gutterBottom>
+            MESSAGES
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 2 }}>
+            View All The Messages From The Users.
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{
+              mt: 2,
+              backgroundColor: "#bc5f18ff",
+              "&:hover": { backgroundColor: "#a34f13" },
+            }}
+            onClick={() => setView("messages")}
+          >
+            Go to Messages
+          </Button>
         </Box>
-      )}
+      </Grid>
+
+      {/* Dishes Card */}
+      <Grid item xs={12} sm={6} md={4}>
+        <Box className="shadow rounded p-5 text-center">
+          <FaUtensils className="fs-1 mb-2 text-success" />
+          <Typography variant="h5" fontWeight="bold" gutterBottom>
+            Manage Dishes
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 2 }}>
+            Manage All The Dishes.You can ADD,EDIT and DELETE dishes
+          </Typography>
+          <Button
+            variant="contained"
+            sx={{
+              mt: 2,
+              backgroundColor: "#bc5f18ff",
+              "&:hover": { backgroundColor: "#a34f13" },
+            }}
+            onClick={() => setView("dishes")}
+          >
+            Go to Dishes
+          </Button>
+        </Box>
+      </Grid>
+    </Grid>
+  </Box>
+)}
+
 
       {/* Messages Section */}
       {view === "messages" && (
